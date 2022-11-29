@@ -28,6 +28,13 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(view.getContext(), ScoreBoard.class);
                 view.getContext().startActivity(intent);}
         });
+        ImageButton history = (ImageButton) findViewById(R.id.history);
+        history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), History.class);
+                view.getContext().startActivity(intent);}
+        });
 
     }
 }
