@@ -7,20 +7,20 @@
     tools:context=".History">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
-        android:backgroundTint="#2196F3"
         android:background="@drawable/shape"
+        android:backgroundTint="#2196F3"
         android:orientation="horizontal"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        android:id="@+id/linearLayout">
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
             android:id="@+id/home"
@@ -61,34 +61,55 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="216dp"
-        android:layout_height="55dp"
+        android:layout_width="214dp"
+        android:layout_height="61dp"
+        android:layout_marginEnd="24dp"
         android:text="Game History "
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/black"
-        tools:layout_editor_absoluteX="51dp"
-        tools:layout_editor_absoluteY="63dp" />
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/calendarView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <CalendarView
         android:id="@+id/calendarView"
-        android:layout_width="327dp"
-        android:layout_height="66dp"
-        tools:layout_editor_absoluteX="51dp"
-        tools:layout_editor_absoluteY="144dp" />
+        android:layout_width="358dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="108dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/back"
-        android:textSize="20sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_width="130dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:background="@android:color/transparent"
         android:text="@string/score"
         android:textColor="@color/black"
+        android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/calendarView"
+        app:layout_constraintEnd_toStartOf="@+id/textView2"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.709" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="358dp"
+        android:layout_height="250dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView"
+        app:layout_constraintVertical_bias="0.1"
+        app:srcCompat="@drawable/history" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
