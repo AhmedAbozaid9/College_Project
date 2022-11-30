@@ -156,7 +156,7 @@
                 android:layout_height="48dp"
                 android:layout_marginEnd="36dp"
                 android:background="@drawable/rounded_but2"
-                android:text="Tow player"
+                android:text="Two player"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

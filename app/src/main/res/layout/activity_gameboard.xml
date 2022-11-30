@@ -22,8 +22,8 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
             app:layout_constraintStart_toStartOf="@+id/linearLayout3"
-            tools:layout_editor_absoluteY="250dp"
-            tools:ignore="UnknownId">
+            tools:ignore="UnknownId"
+            tools:layout_editor_absoluteY="250dp">
 
             <ImageButton
                 android:id="@+id/imageButton00"
@@ -127,37 +127,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/text_view_p1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Player 1: 0"
-        android:textColor="#0C0C0C"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/text_view_p2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Player 2: 0"
-        android:textColor="#070707"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/button_return"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#334EAE"
-        android:text="Home"
+        android:layout_width="360dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#2196F3"
         android:textStyle="bold"
-        app:icon="@drawable/home"
+        android:visibility="visible"
+
+        app:icon="@drawable/pa"
+        app:iconGravity="textEnd"
+        app:iconPadding="-9dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
