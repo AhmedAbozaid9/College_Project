@@ -3,9 +3,11 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import java.util.Objects;
@@ -14,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         //hiding the title bar
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -35,6 +39,22 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(view.getContext(), History.class);
                 view.getContext().startActivity(intent);}
         });
+        Button TwoPlayer = (Button) findViewById(R.id.button6);
+        TwoPlayer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), Gameboard.class);
+                view.getContext().startActivity(intent);}
+        });
+        Button Single_Player = (Button) findViewById(R.id.button2);
+        Single_Player.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), Gameboard.class);
+                view.getContext().startActivity(intent);}
+        });
 
-    }
+
+
+}
 }
