@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.wifi.hotspot2.pps.HomeSp;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -26,14 +27,14 @@ public class ScoreBoard extends AppCompatActivity {
         history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), ScoreBoard.class);
+                Intent intent = new Intent(view.getContext(), History.class);
                 view.getContext().startActivity(intent);}
         });
         ImageButton home = (ImageButton) findViewById(R.id.home);
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), History.class);
+                Intent intent = new Intent(view.getContext(), MainActivity.class);
                 view.getContext().startActivity(intent);}
         });
     }

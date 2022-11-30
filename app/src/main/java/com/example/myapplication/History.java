@@ -33,7 +33,7 @@ public class History extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), History.class);
+                Intent intent = new Intent(view.getContext(), MainActivity.class);
                 view.getContext().startActivity(intent);}
         });
     }
