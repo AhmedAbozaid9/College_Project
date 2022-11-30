@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="score"><![CDATA[< Score]]></string>
+    <string name="game_history">GAME History</string>
+    <string name="history">History</string>
+    <string name="history_"><![CDATA[< History]]></string>
 </resources>
