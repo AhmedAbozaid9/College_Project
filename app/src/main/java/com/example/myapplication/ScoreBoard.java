@@ -7,6 +7,7 @@ import android.net.wifi.hotspot2.pps.HomeSp;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import java.util.Objects;
@@ -32,6 +33,13 @@ public class ScoreBoard extends AppCompatActivity {
         });
         ImageButton home = (ImageButton) findViewById(R.id.home);
         home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), MainActivity.class);
+                view.getContext().startActivity(intent);}
+        });
+        Button back = (Button) findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), MainActivity.class);
