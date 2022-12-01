@@ -1,10 +1,12 @@
 package com.example.myapplication;
 
+import androidx.annotation.MainThread;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -22,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
         //hiding the title bar
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         Objects.requireNonNull(getSupportActionBar()).hide();
-
         setContentView(R.layout.activity_main);
+
         //navigation
         ImageButton score = (ImageButton) findViewById(R.id.score);
         score.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(view.getContext(), Gameboard.class);
                 view.getContext().startActivity(intent);}
         });
+
 
 
 
