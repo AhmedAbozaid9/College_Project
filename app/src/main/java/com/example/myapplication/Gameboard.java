@@ -32,7 +32,7 @@ public class Gameboard extends AppCompatActivity {
         breturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), MainActivity.class);
+                Intent intent = new Intent(view.getContext(), Home.class);
                 view.getContext().startActivity(intent);
             }
         });
