@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-    private static int splash_timeout = 2000;
+    private static int splash_timeout = 3000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
             Intent i = new Intent (MainActivity.this, Home.class);
             startActivity(i);
             finish();
-            onStop();
+
 
         },splash_timeout);
     }
