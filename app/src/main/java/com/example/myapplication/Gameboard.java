@@ -2,10 +2,9 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Icon;
-import android.media.Image;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -13,7 +12,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -22,13 +20,11 @@ import java.util.Objects;
 
 public class Gameboard extends AppCompatActivity {
 
-    public String[] scoreBoard = new String[9];
+    public String[] gameBoard = new String[9];
     Boolean isPlayer1 = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        ImageView imageview;
         super.onCreate(savedInstanceState);
         //hiding the title bar
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -52,54 +48,115 @@ public class Gameboard extends AppCompatActivity {
 
     }
 
-    public void handleClick(ImageButton btn,int idx) {
-
-        if (isPlayer1) {
-            scoreBoard[idx] = "x";
-            btn.setImageResource(R.drawable.x_icon);
-        } else {
-            scoreBoard[idx] = "o";
-            btn.setImageResource(R.drawable.o_icon);
-        }
-
-    }
     public void setBoard(){
+        setHeader();
         LinearLayout l1 = (LinearLayout) findViewById(R.id.linearLayout1);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT
                 ,ViewGroup.LayoutParams.MATCH_PARENT));
         params.weight = 1.0f;
-        ImageButton b0 = new ImageButton(this);
-        b0.setLayoutParams(params);
-        l1.addView(b0);
-        ImageButton b1 = new ImageButton(this);
-        b1.setLayoutParams(params);
-        l1.addView(b1);
-        ImageButton b2 = new ImageButton(this);
-        b2.setLayoutParams(params);
-        l1.addView(b2);
+        for(int i = 0 ; i < 3;i++){
+            ImageButton b0 = new ImageButton(this);
+            String val = gameBoard[i];
+            int finalI = i;
+            b0.setOnClickListener(view -> {
+               if(val == null) {
+                   gameBoard[finalI] = isPlayer1 ? "x" : "o";
+                   isPlayer1 = !isPlayer1;
+                   cleanBoard();
+                   setBoard();
+               }
+            });
+            b0.setLayoutParams(params);
+            l1.addView(b0);
+
+            if(Objects.equals(val, "x")) {
+                b0.setImageResource(R.drawable.x_icon);
+            }
+            if(Objects.equals(val, "o")) {
+                b0.setImageResource(R.drawable.o_icon);
+            }
+        }
+
         LinearLayout l2 = (LinearLayout) findViewById(R.id.linearLayout2);
-        ImageButton b3 = new ImageButton(this);
-        b3.setLayoutParams(params);
-        l2.addView(b3);
-        ImageButton b4 = new ImageButton(this);
-        b4.setLayoutParams(params);
-        l2.addView(b4);
-        ImageButton b5 = new ImageButton(this);
-        b5.setLayoutParams(params);
-        l2.addView(b5);
+        for(int i = 0 ; i < 3;i++){
+            ImageButton b0 = new ImageButton(this);
+            b0.setLayoutParams(params);
+            String val = gameBoard[i + 3];
+
+            int finalI = i;
+            b0.setOnClickListener(view -> {
+                if(val == null) {
+                    gameBoard[finalI + 3] = isPlayer1 ? "x" : "o";
+                    isPlayer1 = !isPlayer1;
+                    cleanBoard();
+                    setBoard();
+                }
+            });
+            l2.addView(b0);
+
+            if(Objects.equals(val, "x")) {
+                b0.setImageResource(R.drawable.x_icon);
+            }
+            if(Objects.equals(val, "o")) {
+                b0.setImageResource(R.drawable.o_icon);
+            }
+        }
+
         LinearLayout l3 = (LinearLayout) findViewById(R.id.linearLayout3);
-        ImageButton b6 = new ImageButton(this);
-        b6.setLayoutParams(params);
-        l3.addView(b6);
-        ImageButton b7 = new ImageButton(this);
-        b7.setLayoutParams(params);
-        l3.addView(b7);
-        ImageButton b8 = new ImageButton(this);
-        b8.setLayoutParams(params);
-        l3.addView(b8);
+        for(int i = 0 ; i < 3;i++){
+            ImageButton b0 = new ImageButton(this);
+            String val = gameBoard[i + 6];
+            int finalI = i;
+            b0.setOnClickListener(view -> {
+                if(val == null) {
+                    gameBoard[finalI + 6] = isPlayer1 ? "x" : "o";
+                    isPlayer1 = !isPlayer1;
+                    cleanBoard();
+                    setBoard();
+                }
+            });
+            b0.setLayoutParams(params);
+            l3.addView(b0);
+
+            if(Objects.equals(val, "x")) {
+                b0.setImageResource(R.drawable.x_icon);
+            }
+            if(Objects.equals(val, "o")) {
+                b0.setImageResource(R.drawable.o_icon);
+            }
+        }
+
+    }
+    public void setHeader() {
+        //TODO change when the game state changes
+        TextView header = findViewById(R.id.gameHeader);
+        if(isPlayer1) {
+            header.setText(R.string.xTurn);
+            header.setTextColor(Color.parseColor("#2196F3"));
+        }
+        else {
+            header.setText(R.string.OTurn);
+            header.setTextColor(Color.parseColor("#fe827e"));
+        }
+    }
+    public void cleanBoard() {
+        LinearLayout l1 = (LinearLayout) findViewById(R.id.linearLayout1);
+        l1.removeAllViews();
+        LinearLayout l2 = (LinearLayout) findViewById(R.id.linearLayout2);
+        l2.removeAllViews();
+        LinearLayout l3 = (LinearLayout) findViewById(R.id.linearLayout3);
+        l3.removeAllViews();
+
     }
 
-
+    public String checkBoard() {
+        String status = "";
+        // when to return draw
+        //when to return x
+        //when to return o
+        return "";
     }
+
+}
 
 

@@ -57,12 +57,13 @@
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/gameHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:text="Your Turn"
+        android:text="X Turn"
         android:textAlignment="center"
-        android:textColor="#040404"
+        android:textColor="#2196F3"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/relativeLayout"

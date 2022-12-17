@@ -4,4 +4,6 @@
     <string name="game_history">GAME History</string>
     <string name="history">History</string>
     <string name="history_"><![CDATA[< History]]></string>
+    <string name="xTurn">X Turn</string>
+    <string name="OTurn">O Turn</string>
 </resources>
