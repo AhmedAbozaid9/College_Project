@@ -52,7 +52,7 @@ public class Home extends AppCompatActivity {
         Single_Player.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), Gameboard.class);
+                Intent intent = new Intent(view.getContext(), GameBoardAi.class);
                 view.getContext().startActivity(intent);}
         });
 

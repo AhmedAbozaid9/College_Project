@@ -1,24 +1,21 @@
 package com.example.myapplication;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.Objects;
 
-public class Gameboard extends AppCompatActivity {
+public class GameBoardAi extends AppCompatActivity {
 
     public String[] gameBoard = new String[9];
     Boolean isPlayer1 = true;
@@ -32,16 +29,14 @@ public class Gameboard extends AppCompatActivity {
 
         setContentView(R.layout.activity_gameboard);
 
-       setBoard();
+        setBoard();
 
         Button returnBtn = (Button) findViewById(R.id.button_return);
         returnBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               cleanBoard();
-               isPlayer1 = true;
-                gameBoard = new String[9];
-                setBoard();
+                Intent intent = new Intent(view.getContext(), Home.class);
+                view.getContext().startActivity(intent);
             }
         });
 
@@ -61,12 +56,12 @@ public class Gameboard extends AppCompatActivity {
             String val = gameBoard[i];
             int finalI = i;
             b0.setOnClickListener(view -> {
-               if(val == null) {
-                   gameBoard[finalI] = isPlayer1 ? "x" : "o";
-                   isPlayer1 = !isPlayer1;
-                   cleanBoard();
-                   setBoard();
-               }
+                if(val == null) {
+                    gameBoard[finalI] = isPlayer1 ? "x" : "o";
+                    isPlayer1 = !isPlayer1;
+                    cleanBoard();
+                    setBoard();
+                }
             });
             b0.setLayoutParams(params);
             l1.addView(b0);
@@ -158,7 +153,4 @@ public class Gameboard extends AppCompatActivity {
         //when to return o
         return "";
     }
-
 }
-
-
