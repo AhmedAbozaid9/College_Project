@@ -153,4 +153,7 @@ public class GameBoardAi extends AppCompatActivity {
         //when to return o
         return "";
     }
+    public String player2Move() {
+        return "";
+    }
 }

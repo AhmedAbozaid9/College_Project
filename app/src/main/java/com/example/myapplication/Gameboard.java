@@ -1,24 +1,17 @@
 package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.res.TypedArrayUtils;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -148,8 +141,8 @@ public class Gameboard extends AppCompatActivity {
     }
 
     public void setHeader() {
-        //TODO change when the game state changes
         TextView header = findViewById(R.id.gameHeader);
+
         if (isPlayer1) {
             header.setText(R.string.xTurn);
             header.setTextColor(Color.parseColor("#2196F3"));
@@ -169,7 +162,7 @@ public class Gameboard extends AppCompatActivity {
 
     }
 
-    public String checkBoard() {
+    public void checkBoard() {
         String status = null;
         TextView t1 = (TextView) findViewById(R.id.textView5);
         // when to return draw
@@ -235,10 +228,19 @@ public class Gameboard extends AppCompatActivity {
                     t1.setText(status + " wins");
                 }
             }
-        LinearLayout l1 = (LinearLayout) findViewById(R.id.linearLayout1);
-        LinearLayout l2 = (LinearLayout) findViewById(R.id.linearLayout2);
-        LinearLayout l3 = (LinearLayout) findViewById(R.id.linearLayout3);
+
         if(status != null){
+            disableBoard();
+        }
+
+        //TODO send data to firebase
+        // you have status which is 'x', 'o', null
+    }
+
+        public void disableBoard() {
+            LinearLayout l1 = (LinearLayout) findViewById(R.id.linearLayout1);
+            LinearLayout l2 = (LinearLayout) findViewById(R.id.linearLayout2);
+            LinearLayout l3 = (LinearLayout) findViewById(R.id.linearLayout3);
             for (int i = 0; i < l1.getChildCount(); i++) {
                 View child = l1.getChildAt(i);
                 child.setEnabled(false);
@@ -252,12 +254,6 @@ public class Gameboard extends AppCompatActivity {
                 child.setEnabled(false);
             }
         }
-
-
-
-            return status;
-        }
-
 }
 
 
