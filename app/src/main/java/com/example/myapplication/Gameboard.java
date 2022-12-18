@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.Objects;
 
 public class Gameboard extends AppCompatActivity {
@@ -41,7 +42,6 @@ public class Gameboard extends AppCompatActivity {
             }
         }, 100);
 
-        TextView t1 = (TextView) findViewById(R.id.textView5);
         Button returnBtn = (Button) findViewById(R.id.button_return);
         returnBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +50,7 @@ public class Gameboard extends AppCompatActivity {
                 isPlayer1 = true;
                 gameBoard = new String[9];
                 setBoard();
-                t1.setText("");
+
             }
         });
 
@@ -164,70 +164,62 @@ public class Gameboard extends AppCompatActivity {
 
     public void checkBoard() {
         String status = null;
-        TextView t1 = (TextView) findViewById(R.id.textView5);
+        TextView header = findViewById(R.id.gameHeader);
         // when to return draw
         if (!Arrays.asList(gameBoard).contains(null)) {
-            t1.setText("Draw");
+            header.setText("Draw");
+            header.setTextColor(Color.parseColor("#000000"));
         }
         // when to win
         if ((gameBoard[0] == gameBoard[1]) && (gameBoard[1] == gameBoard[2])) {
             status = gameBoard[0];
-            if (status == null) {
-
-            } else {
-                t1.setText(status + " wins");
+            if (status != null) {
+                header.setText(status.toUpperCase(Locale.ROOT) + " wins");
+                header.setTextColor(Color.parseColor("#000000"));
             }
         } else if ((gameBoard[3] == gameBoard[4]) && (gameBoard[4] == gameBoard[5])) {
             status = gameBoard[3];
-            if (status == null) {
-
-            } else {
-                t1.setText(status + " wins");
+            if (status != null) {
+                header.setText(status.toUpperCase(Locale.ROOT) + " wins");
+                header.setTextColor(Color.parseColor("#000000"));
             }
         } else if ((gameBoard[6] == gameBoard[7]) && (gameBoard[7] == gameBoard[8])) {
             status = gameBoard[6];
-            if (status == null) {
-
-            } else {
-                t1.setText(status + " wins");
+            if (status != null) {
+                header.setText(status.toUpperCase(Locale.ROOT) + " wins");
+                header.setTextColor(Color.parseColor("#000000"));
             }
         } else if ((gameBoard[0] == gameBoard[3]) && (gameBoard[3] == gameBoard[6])) {
             status = gameBoard[0];
-            if (status == null) {
-
-            } else {
-                t1.setText(status + " wins");
+            if (status != null) {
+                header.setText(status.toUpperCase(Locale.ROOT) + " wins");
+                header.setTextColor(Color.parseColor("#000000"));
             }
         } else if ((gameBoard[1] == gameBoard[4]) && (gameBoard[4] == gameBoard[7])) {
             status = gameBoard[1];
-            if (status == null) {
-
-            } else {
-                t1.setText(status + " wins");
+            if (status != null) {
+                header.setText(status.toUpperCase(Locale.ROOT) + " wins");
+                header.setTextColor(Color.parseColor("#000000"));
             }
-
         }else if ((gameBoard[2] == gameBoard[5]) && (gameBoard[5] == gameBoard[8])) {
-                status = gameBoard[2];
-                if (status == null) {
-
-                } else {
-                    t1.setText(status + " wins");
-                }
-            } else if ((gameBoard[0] == gameBoard[4]) && (gameBoard[4] == gameBoard[8])) {
-                status = gameBoard[0];
-                if (status == null) {
-
-                } else {
-                    t1.setText(status + " wins");
-                }
-            } else if ((gameBoard[2] == gameBoard[4]) && (gameBoard[4] == gameBoard[6])) {
-                status = gameBoard[2];
-                if (status == null) {
-
-                } else {
-                    t1.setText(status + " wins");
-                }
+            status = gameBoard[2];
+            if (status != null) {
+                header.setText(status.toUpperCase(Locale.ROOT) + " wins");
+                header.setTextColor(Color.parseColor("#000000"));
             }
+        } else if ((gameBoard[0] == gameBoard[4]) && (gameBoard[4] == gameBoard[8])) {
+            status = gameBoard[0];
+            if (status != null) {
+                header.setText(status.toUpperCase(Locale.ROOT) + " wins");
+                header.setTextColor(Color.parseColor("#000000"));
+            }
+        } else if ((gameBoard[2] == gameBoard[4]) && (gameBoard[4] == gameBoard[6])) {
+            status = gameBoard[2];
+            if (status != null) {
+                header.setText(status.toUpperCase(Locale.ROOT) + " wins");
+                header.setTextColor(Color.parseColor("#000000"));
+            }
+        }
 
         if(status != null){
             disableBoard();
@@ -237,26 +229,21 @@ public class Gameboard extends AppCompatActivity {
         // you have status which is 'x', 'o', null
     }
 
-        public void disableBoard() {
-            LinearLayout l1 = (LinearLayout) findViewById(R.id.linearLayout1);
-            LinearLayout l2 = (LinearLayout) findViewById(R.id.linearLayout2);
-            LinearLayout l3 = (LinearLayout) findViewById(R.id.linearLayout3);
-            for (int i = 0; i < l1.getChildCount(); i++) {
-                View child = l1.getChildAt(i);
-                child.setEnabled(false);
-            }
-            for (int i = 0; i < l2.getChildCount(); i++) {
-                View child = l2.getChildAt(i);
-                child.setEnabled(false);
-            }
-            for (int i = 0; i < l3.getChildCount(); i++) {
-                View child = l3.getChildAt(i);
-                child.setEnabled(false);
-            }
+    public void disableBoard() {
+        LinearLayout l1 = (LinearLayout) findViewById(R.id.linearLayout1);
+        LinearLayout l2 = (LinearLayout) findViewById(R.id.linearLayout2);
+        LinearLayout l3 = (LinearLayout) findViewById(R.id.linearLayout3);
+        for (int i = 0; i < l1.getChildCount(); i++) {
+            View child = l1.getChildAt(i);
+            child.setEnabled(false);
         }
+        for (int i = 0; i < l2.getChildCount(); i++) {
+            View child = l2.getChildAt(i);
+            child.setEnabled(false);
+        }
+        for (int i = 0; i < l3.getChildCount(); i++) {
+            View child = l3.getChildAt(i);
+            child.setEnabled(false);
+        }
+    }
 }
-
-
-
-
-
