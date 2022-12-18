@@ -223,10 +223,11 @@ public class Gameboard extends AppCompatActivity {
 
         if(status != null){
             disableBoard();
+            //TODO send data to firebase
+            // you have status which is 'x', 'o', null
         }
 
-        //TODO send data to firebase
-        // you have status which is 'x', 'o', null
+
     }
 
     public void disableBoard() {
