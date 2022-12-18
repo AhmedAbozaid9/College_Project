@@ -64,7 +64,7 @@
         android:text="X Turn"
         android:textAlignment="center"
         android:textColor="#2196F3"
-        android:textSize="34sp"
+        android:textSize="48sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
         app:layout_constraintEnd_toEndOf="parent"
