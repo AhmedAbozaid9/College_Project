@@ -35,13 +35,6 @@ public class Gameboard extends AppCompatActivity {
         setBoard();
 
 
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                checkBoard();
-                handler.postDelayed(this, 100);
-            }
-        }, 100);
-
         Button returnBtn = (Button) findViewById(R.id.button_return);
         returnBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +66,8 @@ public class Gameboard extends AppCompatActivity {
                     isPlayer1 = !isPlayer1;
                     cleanBoard();
                     setBoard();
+                    checkBoard();
+
                 }
             });
             b0.setLayoutParams(params);
@@ -99,6 +94,7 @@ public class Gameboard extends AppCompatActivity {
                     isPlayer1 = !isPlayer1;
                     cleanBoard();
                     setBoard();
+                    checkBoard();
                 }
             });
             l2.addView(b0);
@@ -122,6 +118,7 @@ public class Gameboard extends AppCompatActivity {
                     isPlayer1 = !isPlayer1;
                     cleanBoard();
                     setBoard();
+                    checkBoard();
                 }
             });
             b0.setLayoutParams(params);
@@ -163,70 +160,54 @@ public class Gameboard extends AppCompatActivity {
     }
 
     public void checkBoard() {
-        String status = null;
+        String status = "";
         TextView header = findViewById(R.id.gameHeader);
         // when to return draw
         if (!Arrays.asList(gameBoard).contains(null)) {
-            header.setText("Draw");
+            status = "draw";
+            header.setText(R.string.Draw);
             header.setTextColor(Color.parseColor("#000000"));
         }
         // when to win
-        if ((gameBoard[0] == gameBoard[1]) && (gameBoard[1] == gameBoard[2])) {
+        if ((gameBoard[0] == gameBoard[1]) && (gameBoard[1] == gameBoard[2]) && (gameBoard[0] != null)) {
             status = gameBoard[0];
-            if (status != null) {
-                header.setText(status.toUpperCase(Locale.ROOT) + " wins");
-                header.setTextColor(Color.parseColor("#000000"));
-            }
-        } else if ((gameBoard[3] == gameBoard[4]) && (gameBoard[4] == gameBoard[5])) {
+            header.setText(String.format("%s wins", status.toUpperCase(Locale.ROOT)));
+            header.setTextColor(Color.parseColor("#000000"));
+        } else if ((gameBoard[3] == gameBoard[4]) && (gameBoard[4] == gameBoard[5]) && (gameBoard[3] != null)) {
             status = gameBoard[3];
-            if (status != null) {
-                header.setText(status.toUpperCase(Locale.ROOT) + " wins");
-                header.setTextColor(Color.parseColor("#000000"));
-            }
-        } else if ((gameBoard[6] == gameBoard[7]) && (gameBoard[7] == gameBoard[8])) {
+            header.setText(String.format("%s wins", status.toUpperCase(Locale.ROOT)));
+            header.setTextColor(Color.parseColor("#000000"));
+        } else if ((gameBoard[6] == gameBoard[7]) && (gameBoard[7] == gameBoard[8]) && (gameBoard[6] != null)) {
             status = gameBoard[6];
-            if (status != null) {
-                header.setText(status.toUpperCase(Locale.ROOT) + " wins");
-                header.setTextColor(Color.parseColor("#000000"));
-            }
-        } else if ((gameBoard[0] == gameBoard[3]) && (gameBoard[3] == gameBoard[6])) {
+            header.setText(String.format("%s wins", status.toUpperCase(Locale.ROOT)));
+            header.setTextColor(Color.parseColor("#000000"));
+        } else if ((gameBoard[0] == gameBoard[3]) && (gameBoard[3] == gameBoard[6])&& (gameBoard[0] != null)) {
             status = gameBoard[0];
-            if (status != null) {
-                header.setText(status.toUpperCase(Locale.ROOT) + " wins");
-                header.setTextColor(Color.parseColor("#000000"));
-            }
-        } else if ((gameBoard[1] == gameBoard[4]) && (gameBoard[4] == gameBoard[7])) {
+            header.setText(String.format("%s wins", status.toUpperCase(Locale.ROOT)));
+            header.setTextColor(Color.parseColor("#000000"));
+        } else if ((gameBoard[1] == gameBoard[4]) && (gameBoard[4] == gameBoard[7]) && (gameBoard[1] != null)) {
             status = gameBoard[1];
-            if (status != null) {
-                header.setText(status.toUpperCase(Locale.ROOT) + " wins");
-                header.setTextColor(Color.parseColor("#000000"));
-            }
-        }else if ((gameBoard[2] == gameBoard[5]) && (gameBoard[5] == gameBoard[8])) {
+            header.setText(String.format("%s wins", status.toUpperCase(Locale.ROOT)));
+            header.setTextColor(Color.parseColor("#000000"));
+        }else if ((gameBoard[2] == gameBoard[5]) && (gameBoard[5] == gameBoard[8]) && (gameBoard[2] != null)) {
             status = gameBoard[2];
-            if (status != null) {
-                header.setText(status.toUpperCase(Locale.ROOT) + " wins");
-                header.setTextColor(Color.parseColor("#000000"));
-            }
-        } else if ((gameBoard[0] == gameBoard[4]) && (gameBoard[4] == gameBoard[8])) {
+            header.setText(String.format("%s wins", status.toUpperCase(Locale.ROOT)));
+            header.setTextColor(Color.parseColor("#000000"));
+        } else if ((gameBoard[0] == gameBoard[4]) && (gameBoard[4] == gameBoard[8]) && (gameBoard[0] != null)) {
             status = gameBoard[0];
-            if (status != null) {
-                header.setText(status.toUpperCase(Locale.ROOT) + " wins");
-                header.setTextColor(Color.parseColor("#000000"));
-            }
-        } else if ((gameBoard[2] == gameBoard[4]) && (gameBoard[4] == gameBoard[6])) {
+            header.setText(String.format("%s wins", status.toUpperCase(Locale.ROOT)));
+            header.setTextColor(Color.parseColor("#000000"));
+        } else if ((gameBoard[2] == gameBoard[4]) && (gameBoard[4] == gameBoard[6]) && (gameBoard[2] != null)) {
             status = gameBoard[2];
-            if (status != null) {
-                header.setText(status.toUpperCase(Locale.ROOT) + " wins");
-                header.setTextColor(Color.parseColor("#000000"));
-            }
+            header.setText(String.format("%s wins", status.toUpperCase(Locale.ROOT)));
+            header.setTextColor(Color.parseColor("#000000"));
         }
 
-        if(status != null){
+        if(!Objects.equals(status, "")){
             disableBoard();
             //TODO send data to firebase
             // you have status which is 'x', 'o', null
         }
-
 
     }
 

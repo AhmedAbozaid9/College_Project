@@ -71,8 +71,9 @@ public class GameBoardAi extends AppCompatActivity {
                 if (val == null) {
                     gameBoard[finalI] = "x";
                     cleanBoard();
-                    runAi();
+                    checkBoard();
                     setBoard();
+                    runAi();
                 }
             });
             b0.setLayoutParams(params);
@@ -97,8 +98,9 @@ public class GameBoardAi extends AppCompatActivity {
                 if (val == null) {
                     gameBoard[finalI + 3] = "x";
                     cleanBoard();
-                    runAi();
+                    checkBoard();
                     setBoard();
+                    runAi();
                 }
             });
             l2.addView(b0);
@@ -120,8 +122,9 @@ public class GameBoardAi extends AppCompatActivity {
                 if (val == null) {
                     gameBoard[finalI + 6] = "x";
                     cleanBoard();
-                    runAi();
+                    checkBoard();
                     setBoard();
+                    runAi();
                 }
             });
             b0.setLayoutParams(params);
@@ -159,70 +162,54 @@ public class GameBoardAi extends AppCompatActivity {
     }
 
     public void checkBoard() {
-        String status = null;
+        String status = "";
         TextView header = findViewById(R.id.gameHeader);
         // when to return draw
         if (!Arrays.asList(gameBoard).contains(null)) {
-            header.setText("Draw");
+            status = "draw";
+            header.setText(R.string.Draw);
             header.setTextColor(Color.parseColor("#000000"));
         }
         // when to win
-        if ((gameBoard[0] == gameBoard[1]) && (gameBoard[1] == gameBoard[2])) {
+        if ((gameBoard[0] == gameBoard[1]) && (gameBoard[1] == gameBoard[2]) && (gameBoard[0] != null)) {
             status = gameBoard[0];
-            if (status != null) {
-                header.setText(status.toUpperCase(Locale.ROOT) + " wins");
-                header.setTextColor(Color.parseColor("#000000"));
-            }
-        } else if ((gameBoard[3] == gameBoard[4]) && (gameBoard[4] == gameBoard[5])) {
+            header.setText(String.format("%s wins", status.toUpperCase(Locale.ROOT)));
+            header.setTextColor(Color.parseColor("#000000"));
+        } else if ((gameBoard[3] == gameBoard[4]) && (gameBoard[4] == gameBoard[5]) && (gameBoard[3] != null)) {
             status = gameBoard[3];
-            if (status != null) {
-                header.setText(status.toUpperCase(Locale.ROOT) + " wins");
-                header.setTextColor(Color.parseColor("#000000"));
-            }
-        } else if ((gameBoard[6] == gameBoard[7]) && (gameBoard[7] == gameBoard[8])) {
+            header.setText(String.format("%s wins", status.toUpperCase(Locale.ROOT)));
+            header.setTextColor(Color.parseColor("#000000"));
+        } else if ((gameBoard[6] == gameBoard[7]) && (gameBoard[7] == gameBoard[8]) && (gameBoard[6] != null)) {
             status = gameBoard[6];
-            if (status != null) {
-                header.setText(status.toUpperCase(Locale.ROOT) + " wins");
-                header.setTextColor(Color.parseColor("#000000"));
-            }
-        } else if ((gameBoard[0] == gameBoard[3]) && (gameBoard[3] == gameBoard[6])) {
+            header.setText(String.format("%s wins", status.toUpperCase(Locale.ROOT)));
+            header.setTextColor(Color.parseColor("#000000"));
+        } else if ((gameBoard[0] == gameBoard[3]) && (gameBoard[3] == gameBoard[6])&& (gameBoard[0] != null)) {
             status = gameBoard[0];
-            if (status != null) {
-                header.setText(status.toUpperCase(Locale.ROOT) + " wins");
-                header.setTextColor(Color.parseColor("#000000"));
-            }
-        } else if ((gameBoard[1] == gameBoard[4]) && (gameBoard[4] == gameBoard[7])) {
+            header.setText(String.format("%s wins", status.toUpperCase(Locale.ROOT)));
+            header.setTextColor(Color.parseColor("#000000"));
+        } else if ((gameBoard[1] == gameBoard[4]) && (gameBoard[4] == gameBoard[7]) && (gameBoard[1] != null)) {
             status = gameBoard[1];
-            if (status != null) {
-                header.setText(status.toUpperCase(Locale.ROOT) + " wins");
-                header.setTextColor(Color.parseColor("#000000"));
-            }
-        }else if ((gameBoard[2] == gameBoard[5]) && (gameBoard[5] == gameBoard[8])) {
+            header.setText(String.format("%s wins", status.toUpperCase(Locale.ROOT)));
+            header.setTextColor(Color.parseColor("#000000"));
+        }else if ((gameBoard[2] == gameBoard[5]) && (gameBoard[5] == gameBoard[8]) && (gameBoard[2] != null)) {
             status = gameBoard[2];
-            if (status != null) {
-                header.setText(status.toUpperCase(Locale.ROOT) + " wins");
-                header.setTextColor(Color.parseColor("#000000"));
-            }
-        } else if ((gameBoard[0] == gameBoard[4]) && (gameBoard[4] == gameBoard[8])) {
+            header.setText(String.format("%s wins", status.toUpperCase(Locale.ROOT)));
+            header.setTextColor(Color.parseColor("#000000"));
+        } else if ((gameBoard[0] == gameBoard[4]) && (gameBoard[4] == gameBoard[8]) && (gameBoard[0] != null)) {
             status = gameBoard[0];
-            if (status != null) {
-                header.setText(status.toUpperCase(Locale.ROOT) + " wins");
-                header.setTextColor(Color.parseColor("#000000"));
-            }
-        } else if ((gameBoard[2] == gameBoard[4]) && (gameBoard[4] == gameBoard[6])) {
+            header.setText(String.format("%s wins", status.toUpperCase(Locale.ROOT)));
+            header.setTextColor(Color.parseColor("#000000"));
+        } else if ((gameBoard[2] == gameBoard[4]) && (gameBoard[4] == gameBoard[6]) && (gameBoard[2] != null)) {
             status = gameBoard[2];
-            if (status != null) {
-                header.setText(status.toUpperCase(Locale.ROOT) + " wins");
-                header.setTextColor(Color.parseColor("#000000"));
-            }
+            header.setText(String.format("%s wins", status.toUpperCase(Locale.ROOT)));
+            header.setTextColor(Color.parseColor("#000000"));
         }
 
-        if(status != null){
+        if(!Objects.equals(status, "")){
             disableBoard();
             //TODO send data to firebase
             // you have status which is 'x', 'o', null
         }
-
 
     }
 
@@ -251,10 +238,14 @@ public class GameBoardAi extends AppCompatActivity {
                 availablePositions.add(i);
             }
         }
-        Log.e("positions", String.valueOf(availablePositions));
-        int position = getRandomNumber(availablePositions.size());
-        int move = availablePositions.get(position);
-        gameBoard[move] = "o";
+        if(availablePositions.size() > 0) {
+            int position = getRandomNumber(availablePositions.size());
+            int move = availablePositions.get(position);
+            gameBoard[move] = "o";
+        }
+        cleanBoard();
+        checkBoard();
+        setBoard();
     }
     public int getRandomNumber(int max) {
         return (int) Math.floor((Math.random() * ( max)));

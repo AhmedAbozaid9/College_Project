@@ -6,4 +6,5 @@
     <string name="history_"><![CDATA[< History]]></string>
     <string name="xTurn">X Turn</string>
     <string name="OTurn">O Turn</string>
+    <string name="Draw">Draw</string>
 </resources>
