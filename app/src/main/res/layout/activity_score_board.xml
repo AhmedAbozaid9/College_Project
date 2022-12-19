@@ -119,12 +119,12 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:textAlignment="center"
                 android:id="@+id/textView11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Wins"
+                android:textAlignment="center"
                 android:textColor="#FFB048"
                 android:textSize="18dp" />
         </LinearLayout>
