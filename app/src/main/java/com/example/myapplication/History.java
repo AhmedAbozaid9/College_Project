@@ -2,10 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -15,6 +12,8 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class History extends AppCompatActivity {
@@ -28,6 +27,31 @@ public class History extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
 
         setContentView(R.layout.activity_history);
+        final ListView ListView = (ListView) findViewById(R.id.ListViewID);
+        String[] Name = new String[] {};
+
+        // Create a List from String Array elements
+        final List<String> item = new ArrayList<String>(Arrays.asList(Name));
+
+        // Create an ArrayAdapter from List
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
+                (this, android.R.layout.simple_list_item_1, item);
+
+            // Add new Items to List
+            item.add("Player1 : win");
+            item.add("Player2 : lose");
+            item.add("Player3 : win");
+                /*
+                    notifyDataSetChanged ()
+                        Notifies the attached observers that the underlying
+                        data has been changed and any View reflecting the
+                        data set should refresh itself.
+                 */
+            arrayAdapter.notifyDataSetChanged();
+
+
+        // DataBind ListView with items from ArrayAdapter
+        ListView.setAdapter(arrayAdapter);
 
         //navigation
         ImageButton score = (ImageButton) findViewById(R.id.score);

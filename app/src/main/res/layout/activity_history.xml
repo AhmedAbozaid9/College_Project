@@ -77,15 +77,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/ListView"
+    <ListView
+        android:id="@+id/ListViewID"
         android:layout_width="389dp"
         android:layout_height="449dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView"></LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/calendarView"></ListView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
