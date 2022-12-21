@@ -64,8 +64,9 @@
         android:id="@+id/calendarView"
         android:layout_width="358dp"
         android:layout_height="67dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="112dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.452"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -83,17 +84,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:id="@+id/ListView"
+        android:layout_width="389dp"
+        android:layout_height="449dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.574"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView"
-        app:layout_constraintVertical_bias="0.103"
-        app:srcCompat="@drawable/histo" />
+        app:layout_constraintTop_toBottomOf="@+id/calendarView"></LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
