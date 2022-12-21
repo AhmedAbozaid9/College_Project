@@ -20,6 +20,7 @@ import java.util.Objects;
 
 public class GameBoardAi extends AppCompatActivity {
 
+    String status = "";
     public String[] gameBoard = new String[9];
     Handler handler = new Handler();
 
@@ -35,20 +36,13 @@ public class GameBoardAi extends AppCompatActivity {
 
         setBoard();
 
-
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                checkBoard();
-                handler.postDelayed(this, 100);
-            }
-        }, 100);
-
         Button returnBtn = (Button) findViewById(R.id.button_return);
         returnBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 cleanBoard();
                 gameBoard = new String[9];
+                status = "";
                 setBoard();
 
             }
@@ -71,9 +65,11 @@ public class GameBoardAi extends AppCompatActivity {
                 if (val == null) {
                     gameBoard[finalI] = "x";
                     cleanBoard();
-                    checkBoard();
                     setBoard();
-                    runAi();
+                    checkBoard();
+                    if(status == "") {
+                        runAi();
+                    }
                 }
             });
             b0.setLayoutParams(params);
@@ -100,7 +96,9 @@ public class GameBoardAi extends AppCompatActivity {
                     cleanBoard();
                     checkBoard();
                     setBoard();
-                    runAi();
+                    if(status == "") {
+                        runAi();
+                    }
                 }
             });
             l2.addView(b0);
@@ -124,7 +122,9 @@ public class GameBoardAi extends AppCompatActivity {
                     cleanBoard();
                     checkBoard();
                     setBoard();
-                    runAi();
+                    if(status == "") {
+                        runAi();
+                    }
                 }
             });
             b0.setLayoutParams(params);
@@ -162,14 +162,8 @@ public class GameBoardAi extends AppCompatActivity {
     }
 
     public void checkBoard() {
-        String status = "";
         TextView header = findViewById(R.id.gameHeader);
-        // when to return draw
-        if (!Arrays.asList(gameBoard).contains(null)) {
-            status = "draw";
-            header.setText(R.string.Draw);
-            header.setTextColor(Color.parseColor("#000000"));
-        }
+
         // when to win
         if ((gameBoard[0] == gameBoard[1]) && (gameBoard[1] == gameBoard[2]) && (gameBoard[0] != null)) {
             status = gameBoard[0];
@@ -204,8 +198,14 @@ public class GameBoardAi extends AppCompatActivity {
             header.setText(String.format("%s wins", status.toUpperCase(Locale.ROOT)));
             header.setTextColor(Color.parseColor("#000000"));
         }
-
-        if(!Objects.equals(status, "")){
+        // when to return draw
+        if (!Arrays.asList(gameBoard).contains(null)) {
+            status = "draw";
+            header.setText(R.string.Draw);
+            header.setTextColor(Color.parseColor("#000000"));
+        }
+        if(status != ""){
+            Log.e("a7a", status);
             disableBoard();
             //TODO send data to firebase
             // you have status which is 'x', 'o', null
@@ -244,8 +244,8 @@ public class GameBoardAi extends AppCompatActivity {
             gameBoard[move] = "o";
         }
         cleanBoard();
-        checkBoard();
         setBoard();
+        checkBoard();
     }
     public int getRandomNumber(int max) {
         return (int) Math.floor((Math.random() * ( max)));
