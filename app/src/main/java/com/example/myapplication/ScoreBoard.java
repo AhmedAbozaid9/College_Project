@@ -31,7 +31,7 @@ public class ScoreBoard extends AppCompatActivity {
                 Intent intent = new Intent(view.getContext(), History.class);
                 view.getContext().startActivity(intent);}
         });
-        ImageButton home = (ImageButton) findViewById(R.id.home);
+        ImageButton home = (ImageButton) findViewById(R.id.home2);
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -83,11 +83,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.1"
             android:background="@android:color/transparent"
-            app:srcCompat="@drawable/clipboard_text"
-            tools:layout_conversion_absoluteHeight="24dp"
-            tools:layout_conversion_absoluteWidth="24dp"
-            tools:layout_editor_absoluteX="88dp"
-            tools:layout_editor_absoluteY="667dp" />
+            app:srcCompat="@drawable/dark_history" />
+
     </LinearLayout>
 
 

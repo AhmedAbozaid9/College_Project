@@ -24,16 +24,12 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
-            android:id="@+id/home"
+            android:id="@+id/home3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.1"
+            android:layout_weight="0.8"
             android:background="@android:color/transparent"
-            app:srcCompat="@drawable/home"
-            tools:layout_conversion_absoluteHeight="24dp"
-            tools:layout_conversion_absoluteWidth="24dp"
-            tools:layout_editor_absoluteX="40dp"
-            tools:layout_editor_absoluteY="667dp" />
+            app:srcCompat="@drawable/home2" />
 
         <ImageButton
             android:id="@+id/score"
@@ -48,16 +44,13 @@
             tools:layout_editor_absoluteY="667dp" />
 
         <ImageButton
-            android:id="@+id/history"
+            android:id="@+id/history2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.1"
+            android:layout_weight="0.8"
             android:background="@android:color/transparent"
-            app:srcCompat="@drawable/clipboard_text"
-            tools:layout_conversion_absoluteHeight="24dp"
-            tools:layout_conversion_absoluteWidth="24dp"
-            tools:layout_editor_absoluteX="88dp"
-            tools:layout_editor_absoluteY="667dp" />
+            app:srcCompat="@drawable/clipboard_text_1" />
+
     </LinearLayout>
 
     <CalendarView
